@@ -1,3 +1,6 @@
+[![Build remove-branches CLI](https://github.com/lukaszgasior/remove-branches/actions/workflows/build.yml/badge.svg)](https://github.com/lukaszgasior/remove-branches/actions/workflows/build.yml)
+[![Release](https://github.com/lukaszgasior/remove-branches/actions/workflows/release.yml/badge.svg)](https://github.com/lukaszgasior/remove-branches/actions/workflows/release.yml)
+
 # Remove Branches CLI
 
 Remove Branches CLI is a simple tool to help you remove local Git branches that no longer exist on the remote repository. 
