@@ -1,4 +1,4 @@
-name: Build remove-branches CLI
+name: Build
 
 on:
   push:
