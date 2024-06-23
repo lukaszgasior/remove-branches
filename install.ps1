@@ -13,12 +13,13 @@ if (-not (Test-IsAdmin)) {
 }
 
 $repo = "lukaszgasior/remove-branches"
+$projectName = "remove-branches"
 $binName = "git-remove-branches"
 $os = "Windows"
 $arch = "x86_64"
-$url = "https://github.com/$repo/releases/download/$version/${binName}_${version}_${os}_${arch}.zip"
+$url = "https://github.com/$repo/releases/download/$version/${projectName}_${version}_${os}_${arch}.zip"
 
-$output = "$env:TEMP\$binName.zip"
+$output = "$env:TEMP\$projectName.zip"
 $binPath = "$env:ProgramFiles\Git\cmd"
 
 Write-Host "Downloading $url"
