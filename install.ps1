@@ -2,7 +2,14 @@ param (
     [string]$version = "v0.1.0"
 )
 
-if (!([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+function Test-IsAdmin {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+    return $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if (-not (Test-IsAdmin)) {
+    Write-Host "Script not running as Administrator. Restarting with elevated privileges..."
+    
     if ($PSVersionTable.PSEdition -eq "Core") {
         $shell = "pwsh"
     }
@@ -10,9 +17,7 @@ if (!([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]
         $shell = "powershell"
     }
 
-    $scriptPath = $MyInvocation.MyCommand.Path
-    Start-Process -FilePath $shell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`"" -Verb RunAs
-    
+    Start-Process -FilePath $shell -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"" + $($MyInvocation.MyCommand.Path) + "`"") -Verb RunAs
     exit
 }
 
