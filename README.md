@@ -17,8 +17,13 @@ Therefore, I decided to take this opportunity to create Remove Branches CLI in G
 
 ### Linux/macOS
 
-Download the app from the Releases page and add it to you $PATH folder (/usr/local/bin).
-Installation script will be provided soon.
+To install the this on Linux or macOS, open your terminal and run the following command:
+
+```sh
+curl -sSL https://raw.githubusercontent.com/lukaszgasior/remove-branches/main/install.sh | bash
+```
+
+Tool will be installed in `/usr/local/bin` folder
 
 ### Windows
 
