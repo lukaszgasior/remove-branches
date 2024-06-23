@@ -15,8 +15,21 @@ Therefore, I decided to take this opportunity to create Remove Branches CLI in G
 
 ## Installation
 
-Download the app from the Releases page and add it to you $PATH folder.
+### Linux/macOS
+
+Download the app from the Releases page and add it to you $PATH folder (/usr/local/bin).
 Installation script will be provided soon.
+
+### Windows
+
+To install this tool on Windows, open PowerShell as Administrator and run the following command:
+
+```powershell
+iex "& { $(Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/lukaszgasior/remove-branches/main/install.ps1' -UseBasicParsing) }"
+```
+
+The app will be installed in `"$env:ProgramFiles\Git\cmd"` folder, so in case of any issues with running this command 
+make sure this folder is added to your $PATH.
 
 ## Usage
 

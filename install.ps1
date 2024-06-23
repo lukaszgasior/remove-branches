@@ -8,16 +8,7 @@ function Test-IsAdmin {
 }
 
 if (-not (Test-IsAdmin)) {
-    Write-Host "Script not running as Administrator. Restarting with elevated privileges..."
-    
-    if ($PSVersionTable.PSEdition -eq "Core") {
-        $shell = "pwsh"
-    }
-    else {
-        $shell = "powershell"
-    }
-
-    Start-Process -FilePath $shell -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"" + $($MyInvocation.MyCommand.Path) + "`"") -Verb RunAs
+    Write-Host "This script needs to be run as an administrator. Exiting..."
     exit
 }
 
