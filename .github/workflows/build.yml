@@ -15,6 +15,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            extension: ""
+          - os: macos-latest
+            goos: darwin
+            goarch: amd64
+            extension: ""
+          - os: windows-latest
+            goos: windows
+            goarch: amd64
+            extension: ".exe"
 
     steps:
     - name: Checkout repository
@@ -23,30 +36,15 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: 1.22
+        go-version: 1.20
 
     - name: Build application
       run: |
-        go build -o git-remove-branches main.go
+        GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o git-remove-branches${{ matrix.extension }} main.go
 
     - name: Archive production artifacts
-      if: matrix.os == 'ubuntu-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: remove-branches-linux
-        path: git-remove-branches
-
-    - name: Archive production artifacts
-      if: matrix.os == 'macos-latest'
-      uses: actions/upload-artifact@v4
-      with:
-        name: remove-branches-macos
-        path: git-remove-branches
-
-    - name: Archive production artifacts
-      if: matrix.os == 'windows-latest'
-      uses: actions/upload-artifact@v4
-      with:
-        name: remove-branches-windows
-        path: git-remove-branches.exe
+        name: remove-branches-${{ matrix.goos }}-${{ matrix.goarch }}
+        path: git-remove-branches${{ matrix.extension }}
 
