@@ -66,6 +66,12 @@ Just run:
 go build -o git-remove-branches . && mv git-remove-branches $GOPATH/bin/
 ```
 
+## How to run goreleaser locally
+
+```sh
+goreleaser release --snapshot --clean
+```
+
 ## Contributing
 
 If you find any issues or have suggestions for improvements, please open an issue or create a pull request on the GitHub repository.
