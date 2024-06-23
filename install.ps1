@@ -16,7 +16,7 @@ $repo = "lukaszgasior/remove-branches"
 $binName = "remove-branches"
 $os = "Windows"
 $arch = "x86_64"
-$url = "https://github.com/$repo/releases/download/$version/${binName}_${os}_${arch}.zip"
+$url = "https://github.com/$repo/releases/download/$version/${binName}_${version}_${os}_${arch}.zip"
 
 $output = "$env:TEMP\$binName.zip"
 $binPath = "$env:ProgramFiles\Git\cmd"
